@@ -1,32 +1,66 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package card;
 
 /**
- * A class that fills a magic hand of 7 cards with random Card Objects
- * and then asks the user to pick a card and searches the array of cards
- * for the match to the user's card. To be used as starting code in ICE 1
- * @author srinivsi
+ * ICE 1 Card Trick
+ * Modified by: Mohammad Ashraf
+ * Student Number: 991813398
+ * Date Modified: Jan 20, 2026
+ *
+ * This class creates a hand of seven random cards and
+ * searches the hand for a hard-coded lucky card.
  */
 public class CardTrick {
-    
-    public static void main(String[] args)
-    {
+
+    public static void main(String[] args) {
+
+        // Create a hand of 7 cards
         Card[] magicHand = new Card[7];
-        
-        for (int i=0; i<magicHand.length; i++)
-        {
+
+        // Fill the hand with random cards
+        for (int i = 0; i < magicHand.length; i++) {
+
             Card c = new Card();
-            //c.setValue(insert call to random number generator here)
-            //c.setSuit(Card.SUITS[insert call to random number between 0-3 here])
+
+            // Random value between 1 and 13
+            int value = (int) (Math.random() * 13) + 1;
+            c.setValue(value);
+
+            // Random suit from Card.SUITS (index 0–3)
+            int suitIndex = (int) (Math.random() * 4);
+            c.setSuit(Card.SUITS[suitIndex]);
+
+            magicHand[i] = c;
         }
-        
-        //insert code to ask the user for Card value and suit, create their card
-        // and search magicHand here
-        //Then report the result here
-        // add one luckcard hard code 2,clubs
+
+        // Display the magic hand
+        System.out.println("Magic Hand Cards:");
+        for (Card c : magicHand) {
+            System.out.println(c.getSuit() + " " + c.getValue());
+        }
+
+        // Hard-coded lucky card (Task 6 requirement)
+        Card luckyCard = new Card();
+        luckyCard.setValue(2);
+        luckyCard.setSuit("Clubs");
+
+        // Search for the lucky card
+        boolean found = false;
+
+        for (Card c : magicHand) {
+            if (c.getValue() == luckyCard.getValue()
+                    && c.getSuit().equals(luckyCard.getSuit())) {
+                found = true;
+                break;
+            }
+        }
+
+        // Report result
+        System.out.println("\nLucky Card: Clubs 2");
+
+        if (found) {
+            System.out.println("Congratulations! You found the lucky card!");
+        } else {
+            System.out.println("❌ Sorry! The lucky card is not in the hand.");
+        }
     }
-    
 }
