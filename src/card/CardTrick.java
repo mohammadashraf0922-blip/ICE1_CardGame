@@ -60,7 +60,7 @@ public class CardTrick {
         if (found) {
             System.out.println("Congratulations! You found the lucky card!");
         } else {
-            System.out.println("❌ Sorry! The lucky card is not in the hand.");
+            System.out.println("Sorry! The lucky card is not in the hand.");
         }
     }
 }
